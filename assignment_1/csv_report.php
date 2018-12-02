@@ -1,6 +1,6 @@
 <?php 
 
-define( 'FILE_DIR', 'report/malaysia' );
+define( 'FILE_DIR', '/var/www/report/malaysia' );
 
 function listFiles( $date, $reportType, $json = false ) {
 
