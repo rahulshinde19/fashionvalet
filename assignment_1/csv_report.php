@@ -11,11 +11,7 @@ function listFiles( $date, $reportType, $json = false ) {
     $month = $date->format( 'm' );
     $date = $date->format( 'd' );
 
-    foreach( $dirFiles as $file ) {
-        if( preg_match('/.*('.$reportType.')('.$year.')('.$month.')('.$date.')(\d{4})\.csv/',$file,$matches) ) {
-            array_push( $selectedFiles, $file );
-        }
-    }
+	$selectedFiles = preg_grep ('/.*('.$reportType.')('.$year.')('.$month.')('.$date.')(\d{4})\.csv/', $dirFiles);
 
     if( $json ) {
         return json_encode($selectedFiles);
@@ -24,10 +20,7 @@ function listFiles( $date, $reportType, $json = false ) {
     return $selectedFiles;
 }
 
+$result = listFiles( '22-09-2017', 'D' );
 echo "<pre>";
-$date = '22-09-2017';
-$reportType = 'D';
-$result = listFiles( $date, $reportType );
-
 print_r($result);
 ?>
